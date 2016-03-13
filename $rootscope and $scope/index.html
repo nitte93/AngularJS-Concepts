@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body ng-app="myApp">
+    <h1>Understanding $rootscope, $scope and this keyword in AngularJS</h1>
+    I was set in $rootScope: {{test}}
+    <input type="text" ng-model="test">
+    <div ng-controller = "myCtrl1">
+      I've my own scope: {{test}}  
+          <input type="text" ng-model="test">
+    </div>
+    <div ng-controller = "myCtrl2">
+      Even I've my own scope, but my scope has no 'test' object, so I'll inherit from the rootscope:
+      {{test}}
+          <input type="text" ng-model="test">
+    </div>
+    <br><h2>Nested scope</h2>
+    <ul>
+    <li>Try changing the value in the parent scope, The value in the child scope will also change.
+    </li>
+    <li>Try changing the value in the child scope, the value in the parent scope won't change.</li>
+    </ul>
+    <div ng-controller = "myCtrl1">
+      Parent Scope:   {{test}}  <input type="text" ng-model="test">
+      
+      <div ng-controller = "myCtrl2">
+          Child Scope:   {{test}}  <input type="text" ng-model="test">
+      </div>
+    </div>
+    <br>
+    <h2>To eleminate this problem, we make use of "controller as" and 'this' keyword method.</h2>
+    <ul>
+    <li>Try changing the value in the child scope/parent scope, both will reflect the change.</li>
+    </ul>
+    <div ng-controller = "myCtrl1 as ctrl1">
+            Parent Scope:   {{ctrl1.test1}}  <input type="text" ng-model="ctrl1.test1">
+      <div ng-controller = "myCtrl2 as ctrl2">
+            child Scope:   {{ctrl1.test1}}  <input type="text" ng-model="ctrl1.test1">
+            child Scope:   {{ctrl2.test1}}  <input type="text" ng-model="ctrl2.test1">
+
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+
+</html>
