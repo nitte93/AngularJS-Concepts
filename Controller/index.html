@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body ng-app ="myApp">
+    <h1>Angular Controller</h1>
+    
+    <div ng-controller = "myCtrl1 as ctrl1">
+      Controller Name: <input type="text" ng-model = "ctrl1.controllerName">
+      {{ctrl1.controllerName}}
+      <br>
+      <br>
+      <input type="text"  ng-model="ctrl1.newName">
+      <input type="button" name="changeName" value= "changeName" ng-click="ctrl1.changeMyName(ctrl1.newName)">
+        <h2>Nested Controller:</h2>
+        <div ng-controller = "myCtrl2 as ctrl2">
+          Controller Name: <input type="text" ng-model = "ctrl2.controllerName">
+          {{ctrl2.controllerName}}
+          <br>
+          <br>
+          <input type="text"  ng-model="ctrl2.newName">
+          <input type="button" name="changeName" value= "changeName" ng-click="ctrl2.changeMyName(ctrl2.newName)">
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+
+</html>
