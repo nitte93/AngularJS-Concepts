@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.9/angular.js" data-semver="1.4.9"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl as mainCtrl">
+    <p>Hello {{mainCtrl.name}}!</p>
+    <div  ng-controller = "myCtrl1 as ctrl1">
+      Controller Name: {{ctrl1.name}}
+      <ul>
+        <li ng-repeat = "i in ctrl1.userInfo">
+          Name: {{i.name}} &nbsp;&nbsp;
+          Lastname: {{i.lastName}}
+        </li>
+      </ul>
+      Name:<input type="text" ng-model="ctrl1.newName">      
+      Lastname<input type="text" ng-model="ctrl2.newLastname">
+      <input type="button" value="AddValue" ng-click="ctrl1.addValue()">
+    </div>
+    <div  ng-controller = "myCtrl2 as ctrl2">
+      Controller Name: {{ctrl2.name}}
+      <ul>
+        <li ng-repeat = "i in ctrl2.userInfo">
+          Name: {{i.name}} &nbsp;&nbsp;
+          Lastname: {{i.lastName}}
+        </li>
+      </ul>
+      
+    </div>
+
+  </body>
+
+</html>
